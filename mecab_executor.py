@@ -75,7 +75,7 @@ def main(page: ft.Page) -> None:
             return
         compo_text[len(compo_text) - 1].read_only = True
         page.remove(compo_input)
-        execute_mecab(page, check_value, '%s' % text_value)
+        execute_mecab(page, check_value, '%s' % text_value[0])
         compo_text.append(
             ft.TextField(label='日文', hint_text="日文を入力してください。",
                          value='', text_align=ft.TextAlign.LEFT, autofocus=True)
