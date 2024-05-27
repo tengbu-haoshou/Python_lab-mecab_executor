@@ -66,7 +66,7 @@ def main(page: ft.Page) -> None:
             return
 
     def click_execute_button(e):  # noqa
-        text_value = str(compo_text[len(compo_text) - 1].value).split()
+        text_value = str(compo_text[len(compo_text) - 1].value).strip()
         check_value = compo_check_button.value
         if not len(text_value):
             page.snack_bar = ft.SnackBar(ft.Text('日文を入力してください。'), show_close_icon=True)
@@ -75,7 +75,7 @@ def main(page: ft.Page) -> None:
             return
         compo_text[len(compo_text) - 1].read_only = True
         page.remove(compo_input)
-        execute_mecab(page, check_value, '%s' % text_value[0])
+        execute_mecab(page, check_value, '%s' % text_value)
         compo_text.append(
             ft.TextField(label='日文', hint_text="日文を入力してください。",
                          value='', text_align=ft.TextAlign.LEFT, autofocus=True)
